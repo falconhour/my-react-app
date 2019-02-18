@@ -1,4 +1,8 @@
 #exercisePage {
     text-align: left;
-    margin: 0 2em;
+}
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;
 }
