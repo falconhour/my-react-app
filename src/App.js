@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import Header from './Header'
 import ExercisePage from './ExercisePage';
 import './App.css';
+import TemperatureConverter from './TemperatureConverter';
 
 class Main extends Component {
 
   render() {
     return (
       <div className="App">
-          <Header />
-          <br />
-          <br />
-          <ExercisePage />
-        </div>
+        <Header />
+        <br />
+        <ExercisePage heading='Exercise'/>
+        <hr />
+        <TemperatureConverter heading='Temperature Converter'/>
+      </div>
     );
   }
 }

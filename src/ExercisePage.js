@@ -28,8 +28,9 @@ class ExercisePage extends Component {
 
     render() {
         return (
-            <div id='exercisePage'>
+            <div className='module'>
                 <Container>
+                    <h3>{this.props.heading}</h3>
                     <Row>
                         <Col sm={6}>
                             <form onSubmit={this.handleOnSubmit}>
@@ -63,10 +64,10 @@ class ExercisePage extends Component {
                             </Alert>
                         </Col>
                     </Row>
-                </Container>
+                </Container>            
             </div>
         );
     }
 }
 
-export default ExercisePage;
+export default ExercisePage
