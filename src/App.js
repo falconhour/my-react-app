@@ -10,7 +10,6 @@ class Main extends Component {
     return (
       <div className="App">
         <Header />
-        <br />
         <ExercisePage heading='Exercise'/>
         <hr />
         <TemperatureConverter heading='Temperature Converter'/>
