@@ -30,7 +30,6 @@ class ExercisePage extends Component {
         return (
             <div className='module'>
                 <Container>
-                    <h3>{this.props.heading}</h3>
                     <Row>
                         <Col sm={6}>
                             <form onSubmit={this.handleOnSubmit}>

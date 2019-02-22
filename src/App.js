@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Header from './Header'
-import ExercisePage from './ExercisePage';
 import './App.css';
+import ExercisePage from './ExercisePage';
+import Header from './Header';
 import TemperatureConverter from './TemperatureConverter';
+import ComponentContainer from './ComponentContainer';
 
 class Main extends Component {
 
@@ -10,9 +11,12 @@ class Main extends Component {
     return (
       <div className="App">
         <Header />
-        <ExercisePage heading='Exercise'/>
-        <hr />
-        <TemperatureConverter heading='Temperature Converter'/>
+        <ComponentContainer headingTitle='Temperature Converter'>
+          <TemperatureConverter />
+        </ComponentContainer>
+        <ComponentContainer headingTitle='User Management'>
+          <ExercisePage />
+        </ComponentContainer>
       </div>
     );
   }

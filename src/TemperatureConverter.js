@@ -99,7 +99,6 @@ class TemperatureConverter extends Component {
             <div className='module'>
                 <Container>
                     <Form>
-                        <h3>{this.props.heading}</h3>
                         <Form.Row>
                             <Col>
                                 <Boiler temperatureValue={this.state.celcius}/>
