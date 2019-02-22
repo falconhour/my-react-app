@@ -8,14 +8,20 @@ import ComponentContainer from './ComponentContainer';
 class Main extends Component {
 
   render() {
+
+    const components = [
+      <TemperatureConverter />,
+      <ExercisePage />
+    ]
+
     return (
       <div className="App">
         <Header />
         <ComponentContainer headingTitle='Temperature Converter'>
-          <TemperatureConverter />
+          {components[0]}
         </ComponentContainer>
         <ComponentContainer headingTitle='User Management'>
-          <ExercisePage />
+          {components[1]}
         </ComponentContainer>
       </div>
     );
