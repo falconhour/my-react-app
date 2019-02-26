@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ExercisePage from './ExercisePage';
+import UserManagement from './UserManagement';
 import Header from './Header';
 import TemperatureConverter from './TemperatureConverter';
 import ComponentContainer from './ComponentContainer';
@@ -10,17 +10,16 @@ class Main extends Component {
   render() {
 
     const components = [
-      <TemperatureConverter />,
-      <ExercisePage />
+      <UserManagement />,<TemperatureConverter />
     ]
 
     return (
       <div className="App">
         <Header />
-        <ComponentContainer headingTitle='Temperature Converter'>
+        <ComponentContainer headingTitle='User Management'>
           {components[0]}
         </ComponentContainer>
-        <ComponentContainer headingTitle='User Management'>
+        <ComponentContainer headingTitle='Temperature Converter'>
           {components[1]}
         </ComponentContainer>
       </div>
