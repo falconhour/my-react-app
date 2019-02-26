@@ -7,34 +7,21 @@ class ExercisePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            contacts: [
-                {
-                    id: '1',
-                    email: 'my_1_email@ddress.com',
-                    firstName: 'Diane',
-                    lastName: 'Saquing'
-                },
-                {
-                    id: '2',
-                    email: 'my_2_email@ddress.com',
-                    firstName: 'Joy',
-                    lastName: 'Saquing'
-                }
-            ]
+            contacts: []
         };
-        // this.handleOnChange = this.handleOnChange.bind(this);
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
     }
 
-    // handleOnChange(e) {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     });
-    //     this.jsonData.innerText = JSON.stringify(this.state);
-    // }
-
     handleOnSubmit(e) {
-        this.jsonData.innerText = JSON.stringify(this.state);
+        const contacts = this.state.contacts;
+        const contact = {
+            'id' : contacts.length + 1,
+            'email' : e.target.email.value,
+            'firstName' : e.target.firstName.value,
+            'lastName' : e.target.lastName.value
+        }
+        contacts.push(contact);
+        this.setState({contacts: contacts});
         e.preventDefault();
     }
 
@@ -49,7 +36,6 @@ class ExercisePage extends Component {
                                     <label>Email address</label>
                                     <input className="form-control"
                                         name='email'
-                                        // onChange={this.handleOnChange} 
                                         />
                                 </div>
                                 <div className="form-group">
@@ -57,20 +43,22 @@ class ExercisePage extends Component {
                                     <br />
                                     <input className="form-control"
                                         name='firstName'
-                                        // onChange={this.handleOnChange} 
                                         />
                                 </div>
                                 <div className="form-group">
                                     <label>Last Name</label>
                                     <input className="form-control"
                                         name='lastName'
-                                        // onChange={this.handleOnChange} 
                                         />
                                 </div>
                                 <button>Submit</button>
                             </form>
                             <hr />
-                            <UserList contacts={this.state.contacts} />
+                            {this.state.contacts.length === 0 ? 
+                                <Alert variant='info'>No data found.</Alert> :
+                                <UserList contacts={this.state.contacts} />
+                            }
+                            
                         </Col>
                     </Row>
                 </Container>
