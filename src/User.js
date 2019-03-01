@@ -7,9 +7,8 @@ class User extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.contact.id}</td>
-                <td>{this.props.contact.firstName}</td>
-                <td>{this.props.contact.lastName}</td>
+                <td>{this.props.id}</td>
+                <td>{this.props.contact.name}</td>
                 <td>{this.props.contact.email}</td>
             </tr>
         );

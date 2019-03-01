@@ -12,14 +12,13 @@ class UserList extends Component {
             <thead>
                 <tr>
                 <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 <th>Email</th>
                 </tr>
             </thead>
             <tbody>
                 {this.props.contacts.map((contact, index) => {
-                    return <User key={index} contact={contact} />
+                    return <User key={index} id={index + 1} contact={contact} />
                 })}
             </tbody>
             </Table>

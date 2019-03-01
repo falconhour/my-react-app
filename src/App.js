@@ -18,10 +18,7 @@ class Main extends Component {
         <Header />
         <ComponentContainer headingTitle='User Management'>
           {components[0]}
-        </ComponentContainer>
-        <ComponentContainer headingTitle='Temperature Converter'>
-          {components[1]}
-        </ComponentContainer>
+        </ComponentContainer> 
       </div>
     );
   }

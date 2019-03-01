@@ -12,16 +12,28 @@ class ExercisePage extends Component {
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
     }
 
+    componentDidMount() {
+        const url = 'https://localhost:44340/api/values';
+        fetch(url)
+            .then(res => res.json())
+            .then(json => {
+                this.setState({ contacts : json });
+            });
+    }
+
     handleOnSubmit(e) {
         const contacts = this.state.contacts;
         const contact = {
             'id' : contacts.length + 1,
             'email' : e.target.email.value,
-            'firstName' : e.target.firstName.value,
-            'lastName' : e.target.lastName.value
+            'name' : e.target.name.value,
         }
         contacts.push(contact);
-        this.setState({contacts: contacts});
+        this.setState({ contacts });
+        
+        this.email.value = '';
+        this.name.value = '';
+
         e.preventDefault();
     }
 
@@ -36,19 +48,16 @@ class ExercisePage extends Component {
                                     <label>Email address</label>
                                     <input className="form-control"
                                         name='email'
+                                        type='email'
+                                        ref={(el) => this.email = el}
                                         />
                                 </div>
                                 <div className="form-group">
-                                    <label>First Name</label>
+                                    <label>Name</label>
                                     <br />
                                     <input className="form-control"
-                                        name='firstName'
-                                        />
-                                </div>
-                                <div className="form-group">
-                                    <label>Last Name</label>
-                                    <input className="form-control"
-                                        name='lastName'
+                                        name='name'
+                                        ref={(el) => this.name = el}
                                         />
                                 </div>
                                 <button>Submit</button>
