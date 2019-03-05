@@ -2,22 +2,40 @@ import React, { Component } from 'react';
 import { Container, Col, Row, Alert } from 'react-bootstrap';
 import './UserManagement.css';
 import UserList from './UserList';
+import Axios from 'axios';
 
 class ExercisePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            url: 'http://localhost:58542/api/users',
             contacts: []
         };
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
     }
 
     componentDidMount() {
-        const url = 'https://localhost:44340/api/values';
-        fetch(url)
-            .then(res => res.json())
-            .then(json => {
-                this.setState({ contacts : json });
+        Axios.get(this.state.url)
+            .then(response => {
+                this.setState({contacts: response.data});
+            })
+            .catch(error => {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                  } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                  } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                  }
+                  console.log(error.config);
             });
     }
 
@@ -28,8 +46,36 @@ class ExercisePage extends Component {
             'email' : e.target.email.value,
             'name' : e.target.name.value,
         }
-        contacts.push(contact);
-        this.setState({ contacts });
+
+        Axios.post(this.state.url, {data: contact})
+            .then(res => console.log(res))
+            .catch(error => {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                  } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                  } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                  }
+                  console.log(error.config);
+            });
+
+        // const contacts = this.state.contacts;
+        // const contact = {
+        //     'id' : contacts.length + 1,
+        //     'email' : e.target.email.value,
+        //     'name' : e.target.name.value,
+        // }
+        // contacts.push(contact);
+        // this.setState({ contacts });
         
         this.email.value = '';
         this.name.value = '';
