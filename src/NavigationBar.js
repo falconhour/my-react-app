@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap';
 import './NavigationBar.css';
 
@@ -11,7 +11,7 @@ class NavigationBar extends Component {
     render() {
         return (
             <Navbar className="navigation-bar" variant="dark">
-                <Navbar.Brand href="#home">My React App</Navbar.Brand>
+                <Link className="navbar-brand" to="/">My React App</Link>
                 <Nav className="mr-auto">
                     <NavLink className="nav-link" to="/">Home</NavLink>
                     <NavLink className="nav-link" to="/about">About</NavLink>

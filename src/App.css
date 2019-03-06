@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #222222f5;
   height: 150px;
   padding: 20px;
   color: white;
@@ -25,6 +25,10 @@
 
 .App > div.module {
   margin: 20px auto 50px auto;
+}
+
+.App a {
+  color: rgba(255,255,255,.5);
 }
 
 @keyframes App-logo-spin {

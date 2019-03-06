@@ -4,7 +4,7 @@ import './UserManagement.css';
 import UserList from './UserList';
 import Axios from 'axios';
 
-class ExercisePage extends Component {
+class UserManagement extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -122,4 +122,4 @@ class ExercisePage extends Component {
     }
 }
 
-export default ExercisePage
+export default UserManagement
