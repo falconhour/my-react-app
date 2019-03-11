@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import { Jumbotron, Button, Container, Row, Col, Image, Nav } from 'react-bootstrap';
 import './Home.css';
 import logo from '../logo.svg';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    Redirect,
-    withRouter
-  } from "react-router-dom";
+import Featured from './Featured/Featured';
 
 class Home extends Component {
     constructor(props) {
@@ -33,20 +27,7 @@ class Home extends Component {
                         </Row>
                     </Container>
                 </Jumbotron>
-                <Container className="featured">
-                    <Row>
-                        <Col>
-                            <Button variant="dark" block>
-                                <Link className="nav-link" to="/usermanagement" >User Management</Link>
-                            </Button>
-                        </Col>
-                        <Col>
-                            <Button variant="dark" block>
-                                <Link className="nav-link" to="/temperatureconverter" >Temperature Converter</Link>
-                            </Button>
-                        </Col>
-                    </Row>
-                </Container>
+                <Featured />
             </div>
         );
     }

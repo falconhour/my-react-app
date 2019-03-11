@@ -7,22 +7,68 @@ import About from './Components/About';
 import Contact from './Components/Contact';
 import UserManagement from './UserManagement';
 import TemperatureConverter from './TemperatureConverter';
+import ComponentContainer from './ComponentContainer';
 
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      routes: [
+        {
+          component: Home,
+          path: '/',
+          headingTitle: null,
+          exact: true
+        }
+        ,{
+          component: UserManagement,
+          path: '/usermanagement',
+          headingTitle: 'User Management',
+          exact: false
+        }
+        ,{
+          component: TemperatureConverter,
+          path: '/temperatureconverter',
+          headingTitle: 'Temp Converter',
+          exact: false
+        }
+        ,{
+          component: About,
+          path: '/about',
+          headingTitle: null,
+          exact: false
+        }
+        ,{
+          component: Contact,
+          path: '/contact',
+          headingTitle: null,
+          exact: false
+        }
+        ,{
+          component: NoMatch,
+          path: null,
+          headingTitle: null,
+          exact: false
+        }
+      ]
+    };
+  }
 
   render() {
+    const routes = this.state.routes;
     return (
       <div className="App">
         <BrowserRouter>
           <div>
             <NavigationBar />
             <Switch>
-              <Route path="/" component={Home} exact />
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/usermanagement" component={UserManagement} />
-              <Route path="/temperatureconverter" component={TemperatureConverter} />
-              <Route component={NoMatch} />
+              {routes.map((route, index) => 
+                <Route path={route.path}
+                  component={route.component}
+                  exact={route.exact}
+                  key={index}
+                  /> 
+              )};
             </Switch>
           </div>
         </BrowserRouter>
