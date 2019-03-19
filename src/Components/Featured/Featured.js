@@ -24,6 +24,11 @@ class Featured extends Component {
                             <Link className="nav-link" to="/temperatureconverter" >Temperature Converter</Link>
                         </Button>
                     </Col>
+                    <Col>
+                        <Button variant="dark" block>
+                            <Link className="nav-link" to="/context" >Context</Link>
+                        </Button>
+                    </Col>
                 </Row>
             </Container>
         );

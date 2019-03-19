@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Container, Col, Alert } from 'react-bootstrap';
+import { Form, Container, Col, Alert, Row } from 'react-bootstrap';
 import './TemperatureConverter.css';
+import OneSlicer from './Components/Slicers/OneSlicer';
 
 class Celcius extends Component {
     constructor(props) {
@@ -12,7 +13,8 @@ class Celcius extends Component {
         this.props.handleConvertToFahrenheit(e);
     }
 
-    render() {4
+    render() {
+        4
         return (
             <div>
                 <Form.Label>Celsius</Form.Label>
@@ -36,7 +38,8 @@ class Fahrenheit extends Component {
         this.props.handleConvertToCelcius(e);
     }
 
-    render() {4
+    render() {
+        4
         return (
             <div>
                 <Form.Label>Fahrenheit</Form.Label>
@@ -61,7 +64,7 @@ class Boiler extends Component {
 
         return (
             <Alert variant={isBoiling ? 'danger' : 'info'} >
-                {isBoiling ? 'Water is boiling!!!' : 'Just chill and wait to boil.' }
+                {isBoiling ? 'Water is boiling!!!' : 'Just chill and wait to boil.'}
             </Alert>
         );
     }
@@ -79,47 +82,55 @@ class TemperatureConverter extends Component {
     }
 
     handleConvertToFahrenheit(e) {
-        this.setState({celcius: e.target.value})
+        this.setState({ celcius: e.target.value })
 
         const celcius = this.state.celcius
-        const calculatedCelcius = (celcius * (9/5)) + 32
-        this.setState({fahrenheit: calculatedCelcius})
+        const calculatedCelcius = (celcius * (9 / 5)) + 32
+        this.setState({ fahrenheit: calculatedCelcius })
     }
 
     handleConvertToCelcius(e) {
-        this.setState({fahrenheit: e.target.value})
+        this.setState({ fahrenheit: e.target.value })
 
         const fahrenheit = this.state.fahrenheit
-        const calculatedFahrenheit = (fahrenheit - 32) * (5/9)
-        this.setState({celcius: calculatedFahrenheit})
+        const calculatedFahrenheit = (fahrenheit - 32) * (5 / 9)
+        this.setState({ celcius: calculatedFahrenheit })
     }
 
     render() {
         return (
-            <div className='module'>
-                <Container>
-                    <Form>
-                        <Form.Row>
+            <OneSlicer>
+                <div className='module'>
+                    <Container>
+                        <Row>
                             <Col>
-                                <Boiler temperatureValue={this.state.celcius}/>
+                                <h1>Temperature Converter</h1>
+                                <Container>
+                                    <Form>
+                                        <Form.Row>
+                                            <Col>
+                                                <Boiler temperatureValue={this.state.celcius} />
+                                            </Col>
+                                        </Form.Row>
+                                        <Form.Row>
+                                            <Col>
+                                                <Celcius handleConvertToFahrenheit={this.handleConvertToFahrenheit}
+                                                    value={this.state.celcius}
+                                                />
+                                            </Col>
+                                            <Col>
+                                                <Fahrenheit handleConvertToCelcius={this.handleConvertToCelcius}
+                                                    value={this.state.fahrenheit}
+                                                />
+                                            </Col>
+                                        </Form.Row>
+                                    </Form>
+                                </Container>
                             </Col>
-                        </Form.Row>
-                        <Form.Row>
-                            <Col>
-                                <Celcius handleConvertToFahrenheit={this.handleConvertToFahrenheit}
-                                    value={this.state.celcius}
-                                />
-                            </Col>
-                            <Col>
-                                <Fahrenheit handleConvertToCelcius={this.handleConvertToCelcius}
-                                    value={this.state.fahrenheit}
-                                />
-                            </Col>
-                        </Form.Row>
-                    </Form>
-                </Container>
-
-            </div>
+                        </Row>
+                    </Container>
+                </div>
+            </OneSlicer>
         );
     }
 }

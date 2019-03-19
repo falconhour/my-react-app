@@ -7,7 +7,7 @@ import About from './Components/About';
 import Contact from './Components/Contact';
 import UserManagement from './UserManagement';
 import TemperatureConverter from './TemperatureConverter';
-import ComponentContainer from './ComponentContainer';
+import Context from './Components/Context';
 
 class Main extends Component {
   constructor(props) {
@@ -30,6 +30,12 @@ class Main extends Component {
           component: TemperatureConverter,
           path: '/temperatureconverter',
           headingTitle: 'Temp Converter',
+          exact: false
+        }
+        ,{
+          component: Context,
+          path: '/context',
+          headingTitle: Context,
           exact: false
         }
         ,{

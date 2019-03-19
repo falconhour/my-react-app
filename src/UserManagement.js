@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Container, Col, Row, Alert } from 'react-bootstrap';
 import './UserManagement.css';
 import UserList from './UserList';
 import Axios from 'axios';
 import OneSlicer from './Components/Slicers/OneSlicer';
-
 class UserManagement extends Component {
     constructor(props) {
         super(props);
@@ -58,7 +57,7 @@ class UserManagement extends Component {
         e.preventDefault();
     }
 
-    render() {
+    render() {     
         return (
             <OneSlicer>
                 <div className='module'>
@@ -86,11 +85,10 @@ class UserManagement extends Component {
                                     <button>Submit</button>
                                 </form>
                                 <hr />
-                                {this.state.contacts.length === 0 ?
+                                {/* {this.state.contacts.length === 0 ?
                                     <Alert variant='info'>No data found.</Alert> :
                                     <UserList contacts={this.state.contacts} />
-                                }
-
+                                } */}
                             </Col>
                         </Row>
                     </Container>
