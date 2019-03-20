@@ -18,7 +18,7 @@ class NavigationBar extends Component {
                     <NavLink className="nav-link" to="/contact">Contact</NavLink>
                 </Nav>
                 <Navbar.Text className="justify-content-end">
-                    {React.version}
+                    v{React.version}
                 </Navbar.Text>
             </Navbar>
         );
