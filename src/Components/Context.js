@@ -21,10 +21,24 @@ class MyContextProvider extends Component {
     }
 }
 
-const ButtonContainer = (props) => (
-    <div>
-        This is the <span style={{color: 'blue', fontWeight: 'bold'}}>button container...</span>
-        <div style={{border: '1px solid blue'}}>
+class SuperContext extends Component {
+    state = {
+        buttonName: 'My button from SuperContext',
+        buttonVariant: 'success'
+    };
+    render() {
+        return (
+            <MyContext.Provider value={{ state: this.state }}>
+                {this.props.children}
+            </MyContext.Provider>
+        );
+    }
+}
+
+const ButtonContainer = () => (
+    <div style={{ marginLeft: '20px' }}>
+        This is the <span style={{ fontWeight: 'bold' }}>button container...</span>
+        <div>
             <CustomButton />
         </div>
     </div>
@@ -34,6 +48,8 @@ class CustomButton extends Component {
     render() {
         return (
             <div>
+                <span style={{ fontSize: '10px' }}>Context Consumer</span>
+                <br />
                 <MyContext.Consumer>
                     {(context) => (
                         <Button variant={context.state.buttonVariant}>
@@ -46,8 +62,7 @@ class CustomButton extends Component {
     }
 }
 
-class Context extends Component {
-    //...other codes...
+class SuperContextContainer extends Component {
     render() {
         return (
             <OneSlicer>
@@ -57,12 +72,15 @@ class Context extends Component {
                             <Col>
                                 <h1>Context</h1>
                                 <div>
-                                    This is the <span style={{color: 'red', fontWeight: 'bold'}}>parent container</span>
-                                    <div style={{border: '1px solid red'}}>
-                                        <MyContextProvider>
-                                            <ButtonContainer />
-                                        </MyContextProvider>
-                                    </div>
+                                    This is the <span style={{ fontWeight: 'bold', color: 'green' }}>context container (SuperContextContainer class)</span>
+                                    <br />
+                                    <code style={{ fontSize: '10px' }}>
+                                        buttonName: 'My button from SuperContext',
+                                        buttonVariant: 'success'
+                                    </code>
+                                    <SuperContext>
+                                        <ContextContainer />
+                                    </SuperContext>
                                 </div>
                             </Col>
                         </Row>
@@ -71,7 +89,31 @@ class Context extends Component {
             </OneSlicer>
         );
     }
+}
+
+class ContextContainer extends Component {
+    //...other codes...
+    render() {
+        return (
+            <div style={{ marginLeft: '20px' }}>
+                This is the <span style={{ color: '#ffc107', fontWeight: 'bold' }}>context container (ContextContainer class)</span>
+                <br />
+                <code style={{ fontSize: '10px' }}>
+                    buttonName: 'My button',
+                    buttonVariant: 'warning'
+                </code>
+                <div>
+
+                    <MyContextProvider>
+                        <ButtonContainer />
+                    </MyContextProvider>
+
+                    <ButtonContainer />
+                </div>
+            </div>
+        );
+    }
     //...other codes...
 }
 
-export default Context;
+export default SuperContextContainer;

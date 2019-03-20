@@ -14,7 +14,6 @@ class Celcius extends Component {
     }
 
     render() {
-        4
         return (
             <div>
                 <Form.Label>Celsius</Form.Label>
@@ -39,7 +38,6 @@ class Fahrenheit extends Component {
     }
 
     render() {
-        4
         return (
             <div>
                 <Form.Label>Fahrenheit</Form.Label>
