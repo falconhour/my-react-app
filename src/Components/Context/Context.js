@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OneSlicer from './Slicers/OneSlicer';
+import OneSlicer from '../Slicers/OneSlicer';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const MyContext = React.createContext();

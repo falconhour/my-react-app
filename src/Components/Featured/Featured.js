@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import {
-    BrowserRouter as Router,
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { routes } from '../../Routes';
+import './Featured.css';
 
 class Featured extends Component {
     constructor(props) {
@@ -13,23 +12,13 @@ class Featured extends Component {
     render() {
         return (
             <Container className="featured">
-                <Row>
-                    <Col>
-                        <Button variant="dark" block>
-                            <Link className="nav-link" to="/usermanagement" >User Management</Link>
-                        </Button>
-                    </Col>
-                    <Col>
-                        <Button variant="dark" block>
-                            <Link className="nav-link" to="/temperatureconverter" >Temperature Converter</Link>
-                        </Button>
-                    </Col>
-                    <Col>
-                        <Button variant="dark" block>
-                            <Link className="nav-link" to="/context" >Context</Link>
-                        </Button>
-                    </Col>
-                </Row>
+                    {routes.map((route) => {
+                        if (route.isFeatured) {
+                            return <Button variant="dark">
+                                <Link className="nav-link" to={route.path}>{route.headingTitle}</Link>
+                            </Button>
+                        }
+                    })}
             </Container>
         );
     }
