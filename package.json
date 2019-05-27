@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "mobx": "^5.9.4",
+    "mobx-state-tree": "^3.14.0",
     "react": "^16.6.0",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.6.0",
@@ -16,5 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-helmet": "^5.2.0"
   }
 }
